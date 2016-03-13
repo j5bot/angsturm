@@ -1,0 +1,52 @@
+{
+  "name": "angsturm",
+  "description": "Declaration, definition, and composition framework and example application.",
+  "main": "",
+  "authors": [
+    "Jonathan 'J5' Cook <jonathan.j5.cook@gmail.com>"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/j5bot/angsturm",
+  "moduleType": [],
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "es5-shim": "~3.1.1",
+    "json3": "~3.3.2",
+
+    "underscore": "~1.8.3",
+    "jquery": "2.2.1",
+
+    "jquery-file-upload": "~9.10.4",
+    "jquery.jsoneditor": "https://raw.githubusercontent.com/DavidDurman/FlexiJsonEditor/master/jquery.jsoneditor.js",
+
+    "angular": "angularjs#^1.5.0",
+    "ui-router": "~0.2.15",
+    "angular-foundation": "~0.6.0",
+    "angular-mocks": "1.4.2",
+    "angular-md5": "~0.1.7",
+    "angular-recursion": "~1.0.5",
+    "angular-route": "1.4.2",
+    "angular-ui-select": "~0.12.0",
+    "angular-sanitize": "1.4.2",
+    "angular-resource": "1.4.2",
+    "angular-ui-tree": "~2.6.0",
+    "angular-xeditable": "~0.1.9",
+
+    "blueimp-tmpl": ">=2.5.4",
+    "fastclick": ">=0.6.11",
+    "font-awesome": "~4.3.0",
+    "foundation": "zurb/bower-foundation#~5.5.2",
+    "microplugin": "0.0.x",
+    "remarkable": "~1.6.0",
+    "selectize": "~0.12.1",
+    "sha1": "https://raw.githubusercontent.com/sytelus/CryptoJS/master/rollups/sha1.js",
+    "sorted-array": "javascript/sorted-array"
+  }
+}

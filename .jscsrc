@@ -1,0 +1,7 @@
+{
+  "preset": "node-style-guide",
+  "disallowMultipleVarDecl": false,
+  "maximumLineLength": 100,
+  "requireSpaceAfterBinaryOperators": false,
+  "requireTrailingComma": false
+}

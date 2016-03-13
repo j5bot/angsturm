@@ -1,0 +1,30 @@
+[
+
+  "foundation/css/normalize.css",
+  "foundation/css/foundation.css",
+
+  "es5-shim/**/*.js",
+  "json3/**/*.js",
+
+  "underscore/**/*.js",
+  "jquery/**/*.js",
+
+  "jquery-*/**/*.js",
+  "jquery.*/**/*.js",
+
+  "angular/**/*.js",
+  "ui-router/**/*.js",
+  "angular-*/**/*.js",
+
+  "blueimp-*/**/*.js",
+  "fastclick/**/*.js",
+  "font-awesome/**/*.js",
+  "foundation/**/*.js",
+  "microplugin/**/*.js",
+  "remarkable/**/*.js",
+  "selectize/**/*.js",
+  "sha1/**/*.js",
+  "sorted-array/**/*.js",
+  "sifter/**/*.js"
+
+]

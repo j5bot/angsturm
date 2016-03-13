@@ -1,0 +1,47 @@
+{
+  "name": "angsturm",
+  "version": "0.1.0",
+  "description": "Declaration, definition, and composition framework and example application.",
+  "main": " ",
+  "scripts": {
+    "test": "karma start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://j5bot@github.com/j5bot/angsturm.git"
+  },
+  "author": "Jonathan 'J5' Cook <jonathan.j5.cook@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/j5bot/angsturm/issues"
+  },
+  "homepage": "https://github.com/j5bot/angsturm#readme",
+  "devDependencies": {
+    "bower": "^1.7.7",
+    "del": "^2.2.0",
+    "event-stream": "^3.3.2",
+    "gulp": "^3.9.1",
+    "gulp-angular-filesort": "^1.1.1",
+    "gulp-autoprefixer": "^3.1.0",
+    "gulp-cache": "^0.4.2",
+    "gulp-concat": "^2.6.0",
+    "gulp-cssnano": "^2.1.1",
+    "gulp-filter": "^4.0.0",
+    "gulp-imagemin": "^2.4.0",
+    "gulp-inject": "^3.0.0",
+    "gulp-jscs": "^3.0.2",
+    "gulp-jshint": "^2.0.0",
+    "gulp-livereload": "^3.8.1",
+    "gulp-load-plugins": "^1.2.0",
+    "gulp-notify": "^2.2.0",
+    "gulp-order": "^1.1.1",
+    "gulp-print": "^2.0.1",
+    "gulp-rename": "^1.2.2",
+    "gulp-ruby-sass": "^2.0.6",
+    "gulp-sourcemaps": "^1.6.0",
+    "gulp-uglify": "^1.5.3",
+    "jshint": "^2.9.1",
+    "main-bower-files": "^2.11.1",
+    "q": "^1.4.1"
+  }
+}

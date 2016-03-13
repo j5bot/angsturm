@@ -1,0 +1,11 @@
+{
+  "overrides": {
+    "foundation": {
+      "main": [
+        "js/foundation.js",
+        "css/normalize.css",
+        "css/foundation.css"
+      ]
+    }
+  }
+}

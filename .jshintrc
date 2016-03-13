@@ -1,0 +1,28 @@
+{
+  "bitwise": false,       // Allow use of bitwise operators
+  "curly": true,          // Always use curly braces around blocks
+  "eqeqeq": true,         // Must use ===
+  "esversion": 5,         // Assume ES5 syntax is OK
+  "latedef": true,        // Prohibit use of variable before it was defined
+  "maxdepth": 5,          // Don't allow really deep nested stuffs
+  "maxparams": 3,         // Don't allow a ton of parameters
+  "noarg": true,          // Don't allow arguments.caller or callee
+  "nocomma": false,       // Allow use of a = b,c,d;
+  "nonbsp": true,         // Warn about non-breaking whitespace
+  "nonew": true,          // Don't allow weird uses of constructor
+  "singleGroups": false,  // Allow using grouping operator for clarity
+  "strict": true,         // Code must use strict mode
+  "undef": true,          // No undefined vars
+  "unused": true,         // Warn for unused variables
+  "boss": false,          // Surround your use of assignments as comparators with ()
+  "eqnull": true,         // Allow comparison to null / undefined
+  "evil": true,           // Allow usage of eval
+  "expr": true,           // Allow usage of expressions over assignments/function calls
+  "latesemic": true,      // Allow one line block w/o semicolon
+  "supernew": true,       // Let it be weird
+  "validthis": true,      // this is this because it got call/apply/bind'ed
+
+  "browser": true,        // Code is for browser environment
+  "nonstandard": true,    // Allow use of nonstandard globals
+  "typed": true           // Allow use of typed arrays
+}
