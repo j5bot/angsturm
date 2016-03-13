@@ -1,0 +1,5 @@
+[
+  { "foo": "bar" },
+  { "random": "list of items" },
+  { "because we can render": "pretty much anything" }
+]

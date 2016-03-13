@@ -1,0 +1,52 @@
+<h4>currentItem</h4>
+<pre>{{ layout.item.items[0].title }} = current: {{ layout.item.items[0] == layout.currentItem }}</pre>
+<pre>{{ layout.item.items[0].items[0].title }} = current: {{ layout.item.items[0].items[0] == layout.currentItem }}</pre>
+<pre>{{ layout.item.items[0].items[0].items[0].title }} = current: {{ layout.item.items[0].items[0].items[0] == layout.currentItem }}</pre>
+<pre>{{ layout.item.items[0].items[0].items[0].items[0].title }} = current: {{ layout.item.items[0].items[0].items[0].items[0] == layout.currentItem }}</pre>
+
+<h4>bgColor.color</h4>
+<pre>{{ layout.currentItem.bgColor.color.value }}</pre>
+<pre>{{ layout.item.items[0].title }} = current: {{ layout.item.items[0].bgColor.color == layout.currentItem.bgColor.color }}</pre>
+<pre>{{ layout.item.items[0].items[0].title }} = current: {{ layout.item.items[0].items[0].bgColor.color == layout.currentItem.bgColor.color }}</pre>
+<pre>{{ layout.item.items[0].items[0].items[0].title }} = current: {{ layout.item.items[0].items[0].items[0].bgColor.color == layout.currentItem.bgColor.color }}</pre>
+<pre>{{ layout.item.items[0].items[0].items[0].items[0].title }} = current: {{ layout.item.items[0].items[0].items[0].items[0].bgColor.color == layout.currentItem.bgColor.color }}</pre>
+
+<h4>settings.bgColor.color</h4>
+<pre>{{ layout.currentItem.settings.bgColor.color.value }}</pre>
+<pre>{{ layout.item.items[0].title }} = current: {{ layout.item.items[0].settings.bgColor.color == layout.currentItem.settings.bgColor.color }}</pre>
+<pre>{{ layout.item.items[0].items[0].title }} = current: {{ layout.item.items[0].items[0].settings.bgColor.color == layout.currentItem.settings.bgColor.color }}</pre>
+<pre>{{ layout.item.items[0].items[0].items[0].title }} = current: {{ layout.item.items[0].items[0].items[0].settings.bgColor.color == layout.currentItem.settings.bgColor.color }}</pre>
+<pre>{{ layout.item.items[0].items[0].items[0].items[0].title }} = current: {{ layout.item.items[0].items[0].items[0].items[0].settings.bgColor.color == layout.currentItem.settings.bgColor.color }}</pre>
+
+<h4>composite.bgColor.color</h4>
+<pre>{{ layout.currentItem.composite.bgColor.color.value }}</pre>
+<pre>{{ layout.item.items[0].title }} = current: {{ layout.item.items[0].composite.bgColor.color == layout.currentItem.composite.bgColor.color }}</pre>
+<pre>{{ layout.item.items[0].items[0].title }} = current: {{ layout.item.items[0].items[0].composite.bgColor.color == layout.currentItem.composite.bgColor.color }}</pre>
+<pre>{{ layout.item.items[0].items[0].items[0].title }} = current: {{ layout.item.items[0].items[0].items[0].composite.bgColor.color == layout.currentItem.composite.bgColor.color }}</pre>
+<pre>{{ layout.item.items[0].items[0].items[0].items[0].title }} = current: {{ layout.item.items[0].items[0].items[0].items[0].composite.bgColor.color == layout.currentItem.composite.bgColor.color }}</pre>
+
+<h4>bgColor.opacity</h4>
+<pre>{{ layout.currentItem.bgColor.opacity.value }}</pre>
+<pre>{{ layout.item.items[0].title }} = current: {{ layout.item.items[0].bgColor.opacity == layout.currentItem.bgColor.opacity }}</pre>
+<pre>{{ layout.item.items[0].items[0].title }} = current: {{ layout.item.items[0].items[0].bgColor.opacity == layout.currentItem.bgColor.opacity }}</pre>
+<pre>{{ layout.item.items[0].items[0].items[0].title }} = current: {{ layout.item.items[0].items[0].items[0].bgColor.opacity == layout.currentItem.bgColor.opacity }}</pre>
+<pre>{{ layout.item.items[0].items[0].items[0].items[0].title }} = current: {{ layout.item.items[0].items[0].items[0].items[0].bgColor.opacity == layout.currentItem.bgColor.opacity }}</pre>
+
+<h4>settings.bgColor.opacity</h4>
+<pre>{{ layout.currentItem.settings.bgColor.opacity.value }}</pre>
+<pre>{{ layout.item.items[0].title }} = current: {{ layout.item.items[0].settings.bgColor.opacity == layout.currentItem.settings.bgColor.opacity }}</pre>
+<pre>{{ layout.item.items[0].items[0].title }} = current: {{ layout.item.items[0].items[0].settings.bgColor.opacity == layout.currentItem.settings.bgColor.opacity }}</pre>
+<pre>{{ layout.item.items[0].items[0].items[0].title }} = current: {{ layout.item.items[0].items[0].items[0].settings.bgColor.opacity == layout.currentItem.settings.bgColor.opacity }}</pre>
+<pre>{{ layout.item.items[0].items[0].items[0].items[0].title }} = current: {{ layout.item.items[0].items[0].items[0].items[0].settings.bgColor.opacity == layout.currentItem.settings.bgColor.opacity }}</pre>
+
+<h4>composite.bgColor.opacity</h4>
+<pre>{{ layout.currentItem.composite.bgColor.opacity.value }}</pre>
+<pre>{{ layout.item.items[0].title }} = current: {{ layout.item.items[0].composite.bgColor.opacity == layout.currentItem.composite.bgColor.opacity }}</pre>
+<pre>{{ layout.item.items[0].items[0].title }} = current: {{ layout.item.items[0].items[0].composite.bgColor.opacity == layout.currentItem.composite.bgColor.opacity }}</pre>
+<pre>{{ layout.item.items[0].items[0].items[0].title }} = current: {{ layout.item.items[0].items[0].items[0].composite.bgColor.opacity == layout.currentItem.composite.bgColor.opacity }}</pre>
+<pre>{{ layout.item.items[0].items[0].items[0].items[0].title }} = current: {{ layout.item.items[0].items[0].items[0].items[0].composite.bgColor.opacity == layout.currentItem.composite.bgColor.opacity }}</pre>
+
+<div class="json-editor" id="jsonTree" json-editor="layout.currentItem | ngstDecomp"></div>
+<p><button id="updateJSON" ng-click="updateJSON()">update json</button></p>
+
+<!-- pre>{{ layout | json }}</pre -->

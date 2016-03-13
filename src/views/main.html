@@ -1,0 +1,209 @@
+<div interface-designer class="designer panel">
+  <div class="toolbox">
+    <div class="panel radius">
+    <div designer-tabs class="button-group">
+      <button
+        type="button"
+        ng-model="this.layoutor"
+        ng-change="setSection('all')"
+        btn-radio="'all'"
+        class="button"><i class="fa fa-cogs"></i></button>
+      
+      <button
+        type="button"
+        ng-model="this.layoutor"
+        ng-change="setSection('contractor')"
+        btn-radio="'contractor'"
+        class="button"><i class="fa fa-wrench"></i></button>
+
+      <button
+        type="button"
+        
+        ng-model="this.layoutor"
+        ng-change="setSection('inspector')"
+        btn-radio="'inspector'"
+        class="button"><i class="fa fa-search"></i></button>
+
+      <button
+        type="button"
+        ng-change="setSection('layoutor')"
+        ng-model="this.layoutor"
+        btn-radio="'layoutor'" 
+        class="button"><i class="fa fa-user-md"></i></button>
+
+    </div>
+  </div>
+  </div>
+  <div ng-show="showSection('contractor')" contractor></div>
+  <div ng-show="showSection('inspector')" inspector watch="item.$id"></div>
+  <div ng-show="showSection('layoutor')" layoutor></div>
+</div>
+
+<renderer mode="layoutor" item="item" items="item.items" pipeline="base,terser,labels,settings"></renderer>
+
+<script type="text/ng-template" id="renderer-items.html">
+  <div renderer {{ attrs }}>{{ pre }}</div>
+</script>
+
+<script type="text/ng-template" id="renderer-item.html">
+  <renderer-item type="type" container="$parent.$parent" {{ attrs }}>{{ content }}</renderer-item>
+</script>
+
+<script type="text/ng-template" id="layoutor-renderer-items.html">
+  <div
+    renderer
+    ui-over
+    ng-class="{ over: over, active: this.item.active, 'insert-after': insertionPoint(item, 'after'), 'insert-in': insertionPoint(item, 'in') }"
+    ng-click="selectItem($event)"
+    {{ attrs }}
+  >{{ pre }}</div>
+</script>
+
+<script type="text/ng-template" id="layoutor-renderer-item.html">
+  <renderer-item
+    ui-over
+    ng-class="{ over: over, 'insert-after': insertionPoint(item, 'after') }"
+    ng-click="selectItem($event)"
+    type="this.type"
+    {{ attrs }}
+  >{{ content }}</renderer-item>
+</script>
+
+<script type="text/ng-template" id="views-aspect-component.html">
+
+  <ng-include src="componentTemplate(this.item, this)">
+  </ng-include>
+
+</script>
+
+<script type="text/ng-template" id="views-component-empty.html">
+  <h3>CHOOSE COMPONENT TYPE</h3>
+</script>
+
+<script type="text/ng-template" id="views-component-heading.html">
+  <dynamic type="componentSettings.headingSize.value">{{ componentSettings.text.value || 'Enter Component Text' }}</dynamic>
+</script>
+
+<script type="text/ng-template" id="views-component-text.html">
+  <p ng-bind-html="componentSettings.textblock.value"></p>
+</script>
+
+<script type="text/ng-template" id="views-component-markdown.html">
+  <div ng-bind-html="componentSettings.markdownText.compiled.value"></div>
+</script>
+
+<script type="text/ng-template" id="views-component-link.html">
+  <a href=""><ng-include src="'views-component-' + (componentSettings.linkType.value || 'link-') + '.html'"></ng-include></a>
+</script>
+
+<script type="text/ng-template" id="views-component-link-to-list.html">
+  <a href=""><ng-include src="'views-component-' + (componentSettings.linkType.value || 'link-') + '.html'"></ng-include></a>
+</script>
+
+<script type="text/ng-template" id="views-component-link-.html">
+  <span>CHOOSE LINK TYPE</span>
+</script>
+
+<script type="text/ng-template" id="views-component-linktext.html">
+  <span aspects ng-bind-html="process(linkText.value || componentSettings.linkText.value) || 'Enter Link Text'"></span>
+</script>
+
+<script type="text/ng-template" id="views-component-button.html">
+  <button aspects ng-bind-html="process(linkText.value || componentSettings.linkText.value) || 'Enter Button Text'"></button>
+</script>
+
+<script type="text/ng-template" id="views-component-image.html">
+  <img aspects ng-src="{{ componentSettings.image.value }}" height="{{ componentSettings.height.value }}" width="{{ componentSettings.width.value }}" />
+</script>
+
+<script type="text/ng-template" id="views-component-vcard.html">
+  <strong>Primary</strong>
+  <ul vcard class="vcard">
+    <li class="fn" ng-bind-html="componentSettings.name.value">Cameron Leslie</li>
+    <li class="street-address" ng-bind-html="componentSettings.address.value">123 Colonial Ave.</li>
+    <li class="locality" ng-bind-html="componentSettings.locality.value">Caprica City</li>
+    <li><span class="state" ng-bind-html="componentSettings.state.value">Caprica</span>, <span class="zip" ng-bind-html="componentSettings.postCode.value">12345</span></li>
+    <li class="email"><a href="mailto:{{ componentSettings.email.value }}" ng-bind-html="componentSettings.email.value">cameronleslie@gmail.com</a></li>
+  </ul>
+</script>
+
+<script type="text/ng-template" id="views-component-task.html">
+  <!-- Task Component -->
+  <div task-component>
+    <!-- item -->
+    <a href="#">
+      <div
+        item data-equalizer-watch
+        class="small-12 medium-6 large-4 columns"
+        style="background-image: url('http://lorempixel.com/400/400/');">
+        <!-- title -->
+        <div title>
+          <span>Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</span>
+        </div>
+        <!-- /title -->
+      </div>
+    </a>
+    <!-- /item -->
+    <!-- item -->
+    <a href="#">
+      <div
+        item data-equalizer-watch
+        class="small-12 medium-6 large-4 columns"
+        style="background-image: url('http://lorempixel.com/400/400/');">
+        <!-- title -->
+        <div title>
+          <span>Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</span>
+        </div>
+        <!-- /title -->
+      </div>
+    </a>
+    <!-- /item -->
+    <!-- item -->
+    <a href="#">
+      <div
+        item data-equalizer-watch
+        class="small-12 medium-6 large-4 columns"
+        style="background-image: url('http://lorempixel.com/400/400/');">
+        <!-- title -->
+        <div title>
+          <span>Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</span>
+        </div>
+        <!-- /title -->
+      </div>
+    </a>
+    <!-- /item -->
+  </div>
+  <!-- /Task Component -->
+</script>
+
+<script type="text/ng-template" id="views-component-actions-cta.html">
+  <list-loader aspects methods="count"></list-loader>
+  <ng-include src="'views-component-link-to-list.html'"></ng-include>
+</script>
+
+<script type="text/ng-template" id="views-component-actions-list.html">
+  <h3 ng-bind-html="process(titleText.value || item.componentSettings.titleText.value)"></h3>
+  <ul actions>
+  <ng-include src="'views-component-any-list.html'"></ng-include>
+  </ul>
+</script>
+<script type="text/ng-template" id="views-component-actions-item.html">
+    <li><a ng-href="item.value" ng-bind-html="item.data.title"></a></li>
+</script>
+
+<script type="text/ng-template" id="views-component-any-list.html">
+  <list-loader methods="query"></list-loader>
+  <div ng-repeat="item in item.items">
+    <ng-include src="itemTemplate()"></ng-include>
+  </div>
+</script>
+
+<div class="debug-panel">
+  <h5>Current Item</h5>
+  <div class="json-editor" id="jsonTree" json-editor="layout.currentItem | ngstDecomp"></div>
+  <h5>Contract</h5>
+  <div class="json-editor" id="contractTree" json-editor="Shared.contractor.contract | ngstDecomp"></div>
+  <p><button id="updateJSON" ng-click="updateJSON()">update json</button></p>
+</div>
+
+<div><ng-include ng-if="isMode('debug','dev')" src="'views/debug.html'"></ng-include></div>

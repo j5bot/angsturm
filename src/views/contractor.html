@@ -1,0 +1,66 @@
+<div class="toolbox contractor">
+  <div class="panel radius">
+    <!-- section example -->
+    <fieldset class="transparent">
+      <!-- example title component-->
+        <strong><i class="fa fa-wrench"></i> Gen. Contractor : </strong>
+        <span editable-text="contractor.contract.title" onaftersave="updateContract($data)">{{ contractor.contract.title }}</span>
+      <i class="fa fa-sort" ng-click="toggleItem('collapsed')"></i>
+      <!-- /example title component -->
+    </fieldset>
+    <!-- /section example -->
+    <fieldset ng-hide="this.collapsed">
+      <ng-include src="'views-contractors-contract-select.html'"></ng-include>
+    </fieldset>
+    <div ng-hide="this.collapsed">
+      <fieldset>
+        <div class="control but-control">
+          <div class="text-right">
+            <a href="#" class="button tiny secondary radius"
+              ng-click="removeContract()"
+              ><i class="fa fa-minus"></i>
+            </a>
+            <a href="#" class="button tiny secondary radius"
+              ng-click="insertContract()"
+              ><i class="fa fa-plus"></i>
+            </a>
+          </div>
+        </div>
+      </fieldset>
+    </div>
+
+    <!-- <pre ng-show="isDev('json')">{{ contractor.contract.settings | json }}</pre> -->
+
+  </div>
+</div>
+
+<script type="text/ng-template" id="views-contractors-contract-select.html">
+  <div>
+    <label>Contract</label>
+    <pre>{{ contractor.contract | json }}</pre>
+    <ui-select
+      ng-change="contractor.refresh()"
+      ng-model="contractor.contract"
+      on-select="compose($item)"
+      theme="selectize"
+    >
+      <ui-select-match placeholder="Select ..." ng-bind-html="$select.selected.markup || $select.selected.title || $select.selected.label"></ui-select-match>
+      <ui-select-choices
+        repeat="v in contractor.contracts track by v.value"
+        >
+        <span ng-bind-html="v.markup || v.title || v.label | highlight: $select.search"></span>
+      </ui-select-choices>
+    </ui-select>
+
+    <div
+      watch-fields="{ channel: 'contract:change', model: contractor.contract }"
+    >
+      <div ng-repeat="s in contractor.contract.ordered track by $index" class="row control">
+        <contractor-item inspector-item item="contractor.contract" setting="s" value="s.setting">
+          <ng-include src="template()"></ng-include>
+        </contractor-item>
+      </div>
+    </div>
+  </div>
+  </div>
+</script>

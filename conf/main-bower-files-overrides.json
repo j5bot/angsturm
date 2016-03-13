@@ -1,11 +1,33 @@
 {
   "overrides": {
+
     "foundation": {
       "main": [
         "js/foundation.js",
         "css/normalize.css",
         "css/foundation.css"
       ]
+    },
+
+    "blueimp-load-image": {
+      "main": [
+        "js/load-image.js",
+        "js/load-image-*.js"
+      ]
+    },
+
+    "jquery-file-upload": {
+      "main": [
+        "js/cors/**/*.js",
+        "js/jquery.fileupload.js",
+        "js/jquery.fileupload-*.js",
+        "js/jquery.iframe-*.js",
+        "css/jquery.fileupload.css",
+        "css/jquery.fileupload-ui.css",
+        "css/jquery.fileupload-noscript.css",
+        "css/jquery.fileupload-ui-noscript.css"
+      ]
     }
+
   }
 }

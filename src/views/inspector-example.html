@@ -1,0 +1,85 @@
+<div ng-class="{ aliased: setAliases('current', layout.currentItem) }" class="toolbox inspector">
+  <div class="panel radius">
+    <!-- section example -->
+    <fieldset>
+      <!-- example title component-->
+      <label><strong>Mr. Inspector : </strong> {{ current.title }}</label>
+      <!-- /example title component -->
+    </fieldset>
+    <!-- /section example -->
+    <div
+      attributes-insert="{ attributes: current.aspects }"
+      class="content">
+      <!-- section example -->
+      <fieldset>
+        <div class="control">
+          <label>Layout
+            <select>
+              <option value="fiftyFifty">50/50</option>
+              <option value="lSidebar">Sidebar - Left</option>
+              <option value="rSidebar">Sidebar - Right</option>
+              <option value="apollo">Apollo</option>
+            </select>
+          </label>
+        </div>
+        <!-- example I/O switch -->
+        <div class="control io">
+          <label>Some Option</label>
+          <div class="switch round tiny">
+            <input id="qwe" type="checkbox">
+            <label for="qwe"></label>
+          </div>
+          <div class="clearfix"></div>
+        </div>
+        <!-- /example I/O switch -->
+      </fieldset>
+      <!-- /section example -->
+      <!-- section example -->
+      <fieldset>
+        <!-- example I/O switch -->
+        <div class="control io">
+          <label>Background color</label>
+          <div class="switch round tiny">
+            <input ng-model="hasbgColor" id="exampleCheckboxSwitch" type="checkbox">
+            <label for="exampleCheckboxSwitch"></label>
+          </div>
+          <div class="clearfix"></div>
+        </div>
+        <!-- /example I/O switch -->
+        <!-- example button -->
+        <div ng-show="hasbgColor" class="control ui-button">
+          <button class="button secondary tiny expand radius">Pick Color</button>
+        </div>
+        <!-- /exmpale button -->
+      </fieldset>
+      <!-- /section example -->
+      <!-- section example -->
+      <fieldset>
+        <!-- example I/O switch -->
+        <div class="control io">
+          <label>Background Image</label>
+          <div class="switch round tiny">
+            <input ng-model="hasbgImage" id="ewer" type="checkbox">
+            <label for="ewer"></label>
+          </div>
+          <div class="clearfix"></div>
+        </div>
+        <!-- /example I/O switch -->
+        <!-- example input -->
+        <div ng-show="hasbgImage" class="control input">
+          <label>Input Label
+            <input disabled type="text" placeholder="large-12.columns" />
+          </label>
+        </div>
+        <!-- /example input -->
+        <!-- example button -->
+        <div ng-show="hasbgImage" class="control ui-button">
+          <button class="button secondary tiny expand radius">Upload Image</button>
+        </div>
+        <!-- /exmpale button -->
+      </fieldset>
+      <!-- /section example -->
+
+    </div>
+  </div>
+</div>

@@ -1,0 +1,93 @@
+<div class="toolbox layoutor">
+  <div class="panel radius">
+    <fieldset class="transparent">
+      <!-- example title component-->
+      <label>
+        <strong><i class="fa fa-user-md"></i> Dr. Layout</strong>
+        <div class="text-right inlined">
+          <a href="#" class="button tiny secondary radius" ng-click="saveAll()">Save</a>
+          <a href="#" class="button tiny secondary radius" ng-click="reset()">Reset</a>
+        </div>
+      </label>
+      <i class="fa fa-sort" ng-click="toggleItem('collapsed')"></i>
+      <!-- /example title component -->
+    </fieldset>
+    <div ng-hide="this.collapsed">
+      <fieldset>
+        <!-- example title component-->
+        <div class="control but-control">
+          <div class="text-right">
+            <a href="#" class="button tiny secondary radius"
+              ng-click="removeItem($event)"
+              ><i class="fa fa-minus"></i>
+            </a>
+            <a href="#" class="button tiny secondary radius"
+              ng-disabled="!canAdd('container')"
+              ng-show="canAdd('container')"
+              ng-click="insertItem('container', $event)"
+              ng-mouseover="consider('container')"
+              ng-mouseover="reconsider()"
+              ><i class="fa fa-plus"></i> Box
+            </a>
+            <a href="#" class="button tiny secondary radius"
+              ng-disabled="!canAdd('row')"
+              ng-show="canAdd('row')"
+              ng-click="insertItem('row', $event)"
+              ng-mouseover="consider('row')"
+              ng-mouseleave="reconsider()"
+              ><i class="fa fa-plus"></i> Row
+            </a>
+            <a href="#" class="button tiny secondary radius"
+              ng-disabled="!canAdd('column')"
+              ng-show="canAdd('column')"
+              ng-click="insertItem('column', $event)"
+              ng-mouseover="consider('column')"
+              ng-mouseleave="reconsider()"
+              ><i class="fa fa-plus"></i> Column
+            </a>
+            <a href="#" class="button tiny secondary radius"
+              ng-disabled="!canAdd('component')"
+              ng-show="canAdd('component')"
+              ng-click="insertItem('component', $event)"
+              ng-mouseover="consider('component')"
+              ng-mouseleave="reconsider()"
+              ><i class="fa fa-plus"></i> Component
+            </a>
+          </div>
+        </div>
+        <!-- /example title component -->
+      </fieldset>
+    </div>
+    <div ng-hide="this.collapsed" class="content">
+      <fieldset class="no-pad">
+        <!-- example tree component-->
+        <div class="control tree">
+          <div class="tree-wrap">
+            <script type="text/ng-template" id="nodes_renderer.html">
+              <div ng-class="{ active: node.active }">
+              <!-- // <div class="item"></div> -->
+                <span ui-tree-handle>
+                  <i class="fa fa-arrows"></i>
+                </span>
+                <span ng-click="selectItem($event);">{{node.title}}</span>
+                <span class="parent" ui-tree-nodes="" ng-model="node.items">
+
+                    <span class="child" ng-repeat="node in node.items" ui-tree-node ng-include="'nodes_renderer.html'"></span>
+                </span>
+              </span>
+            </script>
+            <div ui-tree="treeOptions">
+              <span class="parent" ui-tree-nodes="" ng-model="this.layout.items" id="tree-root">
+                <span class="child" ng-repeat="node in this.layout.items" ui-tree-node ng-include="'nodes_renderer.html'"></span>
+              </span>
+
+              <!-- pre>layout: {{ this.layout | json }}</pre -->
+
+            </div>
+          </div>
+        </div>
+        <!-- /example tree component -->
+      </fieldset>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,5 @@
+[
+  { "value": "1", "data": { "service": "forms", "label": "Data source 3", "action": "forms", "item": "3" }, "label": "Data source 3" },
+  { "value": "2", "data": { "service": "blog", "label": "Data source 4", "action": "posts", "item": "4" }, "label": "Data source 4" },
+  { "value": "3", "data": { "service": "media", "label": "Data source 5", "action": "media", "item": "5" }, "label": "Data source 5" }
+]

@@ -1,0 +1,42 @@
+<div
+  active-marker="{{ item.active }}"
+
+  class="little-boxes"
+  title="{{ item.title }}"
+  
+  ng-class="itemClasses({
+    active: item.active,
+    over: item.over,
+    dynamic: item.aspects
+  })"
+
+  not-foundation-columns="columns()"
+  
+  ui-over="item"
+  attributes-insert="{ attributes: {{ item.aspects || {} }} }"
+  >
+    <span class="active-marker active-marker-top-left">+</span>
+    <span class="active-marker active-marker-top-right">+</span>
+    <span class="active-marker active-marker-bottom-right">+</span>
+    <span class="active-marker active-marker-bottom-left">+</span>
+
+    <span is-dev ng-if="isDev('showID')">{{ this.$id }}</span>
+
+    <div aspects little-boxes item="node" parent="$parent.item"
+
+      ng-if="item.items.length > 0"
+      ng-repeat="node in item.items"
+      ng-click="selectItem($event)"
+
+        complex-foreground complex-background complex-border complex-padding complex-shadow
+
+      not-attributes-insert="{{ node.aspects || {} }} }"
+
+    ></div>
+    <div ng-if="isDev('insertionPoints')" class="insertion-point" ng-show="insertionPoint(item, 'in')"></div>
+
+</div>
+
+<div ng-if="isDev('insertionPoints')" class="insertion-point" ng-show="insertionPoint(item, 'after')"></a></div>
+
+</script>

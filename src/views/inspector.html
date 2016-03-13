@@ -1,0 +1,38 @@
+<div ng-class="" class="toolbox inspector">
+  <div class="panel radius">
+    <!-- <ul class="inspected-types">
+      <li ng-repeat="type in getTypes()" class="inspected-type">{{ type }}</li>
+    </ul> -->
+    <!-- section example -->
+    <fieldset class="transparent">
+      <!-- example title component-->
+      <span ng-if="behaviors.ifDev('showID')">{{ layout.currentItem.$id }}</span>
+      <label>
+        <strong><i class="fa fa-search"></i> Mr. Inspector : </strong>
+        <span editable-text="layout.currentItem.title">{{ layout.currentItem.title }}</span> <i class="fa fa-question-circle" data-tooltip title="{{ getTypes().join(', ') }}"></i>
+      </label>
+      <i class="fa fa-sort" ng-click="toggleItem('collapsed')"></i>
+      <!-- /example title component -->
+    </fieldset>
+    <!-- /section example -->
+    <!-- div
+      attributes-insert="{ attributes: {{ current.aspects || {} }} }"
+      class="content">
+    </div -->
+
+    <!--pre>{{ current.ordered | json }}</pre-->
+    <form-fields
+      
+      ng-hide="this.collapsed"
+
+      fields="layout.currentItem.ordered"
+      
+      vii-model="layout.currentItem"
+
+      dictionary="data"
+      behaviors="methods"
+      
+    ></form-fields>
+
+  </div>
+</div>

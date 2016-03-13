@@ -1,18 +1,38 @@
 [
 
-  "foundation/css/normalize.css",
-  "foundation/css/foundation.css",
+  "jquery-file-upload/jquery.fileupload.css",
+  "jquery-file-upload/jquery.fileupload-ui.css",
+  "jquery-file-upload/jquery.fileupload-noscript.css",
+  "jquery-file-upload/jquery.fileupload-noscript-ui.css",
 
   "es5-shim/**/*.js",
   "json3/**/*.js",
 
   "underscore/**/*.js",
   "jquery/**/*.js",
+  "jquery-ui/**/*.js",
+
+  "foundation/**/*.js",
+
+  "angular/**/*.js",
+
+  "blueimp-tmpl/**/*.js",
+  "blueimp-load-*/**/load-image.js",
+  "blueimp-load-*/**/load-image-orientation.js",
+  "blueimp-load-*/**/load-image-meta.js",
+  "blueimp-load-*/**/load-image-exif.js",
+  "blueimp-load-*/**/load-image-*.js",
+  "blueimp-canvas-*/**/*.js",
+
+  "jquery-file-upload/js/cors/**/*.js",
+  "jquery-file-upload/**/jquery.fileupload.js",
+  "jquery-file-upload/**/jquery.fileupload-process.js",
+  "jquery-file-upload/**/jquery.fileupload-validate.js",
+  "jquery-file-upload/**/jquery.fileupload-*.js",
 
   "jquery-*/**/*.js",
   "jquery.*/**/*.js",
 
-  "angular/**/*.js",
   "ui-router/**/*.js",
   "angular-*/**/*.js",
 
@@ -25,6 +45,17 @@
   "selectize/**/*.js",
   "sha1/**/*.js",
   "sorted-array/**/*.js",
-  "sifter/**/*.js"
+  "sifter/**/*.js",
+
+  "lib/**/*.js",
+  "app.js",
+
+  "foundation/css/normalize.css",
+  "foundation/css/foundation.css",
+
+  "!{app,lib}/**/*.css",
+
+  "lib/**/*.css",
+  "app/**/*.css"
 
 ]
