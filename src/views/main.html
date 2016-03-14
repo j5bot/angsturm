@@ -8,7 +8,7 @@
         ng-change="setSection('all')"
         btn-radio="'all'"
         class="button"><i class="fa fa-cogs"></i></button>
-      
+
       <button
         type="button"
         ng-model="this.layoutor"
@@ -18,7 +18,7 @@
 
       <button
         type="button"
-        
+
         ng-model="this.layoutor"
         ng-change="setSection('inspector')"
         btn-radio="'inspector'"
@@ -28,7 +28,7 @@
         type="button"
         ng-change="setSection('layoutor')"
         ng-model="this.layoutor"
-        btn-radio="'layoutor'" 
+        btn-radio="'layoutor'"
         class="button"><i class="fa fa-user-md"></i></button>
 
     </div>
@@ -39,7 +39,31 @@
   <div ng-show="showSection('layoutor')" layoutor></div>
 </div>
 
+<div class="title-panel">
+  <h2>Ångsturm :: Interface Designer</h2>
+</div>
+
 <renderer mode="layoutor" item="item" items="item.items" pipeline="base,terser,labels,settings"></renderer>
+
+<div class="debug-panel">
+  <details>
+    <summary><h5>Current Item</h5></summary>
+    <div class="json-editor" id="jsonTree" json-editor="layout.currentItem | ngstDecomp"></div>
+  </details>
+
+  <details>
+    <summary><h5>Contract</h5></summary>
+    <div class="json-editor" id="contractTree" json-editor="Shared.contractor.contract | ngstDecomp"></div>
+  </details>
+
+  <p><button id="updateJSON" ng-click="updateJSON()">update json</button></p>
+</div>
+
+<div><ng-include ng-if="isMode('debug','dev')" src="'views/debug.html'"></ng-include></div>
+
+
+<!-- land of templates -->
+
 
 <script type="text/ng-template" id="renderer-items.html">
   <div renderer {{ attrs }}>{{ pre }}</div>
@@ -197,13 +221,3 @@
     <ng-include src="itemTemplate()"></ng-include>
   </div>
 </script>
-
-<div class="debug-panel">
-  <h5>Current Item</h5>
-  <div class="json-editor" id="jsonTree" json-editor="layout.currentItem | ngstDecomp"></div>
-  <h5>Contract</h5>
-  <div class="json-editor" id="contractTree" json-editor="Shared.contractor.contract | ngstDecomp"></div>
-  <p><button id="updateJSON" ng-click="updateJSON()">update json</button></p>
-</div>
-
-<div><ng-include ng-if="isMode('debug','dev')" src="'views/debug.html'"></ng-include></div>

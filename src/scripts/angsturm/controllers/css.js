@@ -1,7 +1,7 @@
 'use strict';
 
 (function (undefined) {
-  
+
   var root = this;
 
   // TODO: move the CSS_PROPERTIES into aspect definitions
@@ -142,7 +142,7 @@
       }
 
       $style.html('.' + styleClass + ' { ' + style.style + ' }');
-    
+
       DynamicCSS.reclass(
         adder, remover,
         $scope.$id,
@@ -151,7 +151,7 @@
     }
 
     if (properties.class) {
-      DynamicCSS.reclass( 
+      DynamicCSS.reclass(
         adder, remover,
         $scope.$id,
         key + '-sub', properties.class
@@ -176,7 +176,7 @@
 
     setCSS();
 
-    messages.listen($scope, channel, key, setCSS, '(this.item.id || viiModel.id)');
+    messages.listen($scope, channel, key, setCSS, '(this.item.id || model.id)');
 
   }
 

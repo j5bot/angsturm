@@ -1,7 +1,7 @@
 'use strict';
 
 (function (undefined) {
-  
+
   angular.module('angsturm.services')
   .factory('AngsturmDynamicCSS', [
 
@@ -10,7 +10,7 @@
     function (
 
       $interpolate
-    
+
     ) {
 
       var
@@ -21,7 +21,7 @@
         SIDES_INTERPOLATER = $interpolate('{{ top }}{{ unit }} {{ right }}{{ unit }} {{ bottom }}{{ unit }} {{ left }}{{ unit }}'),
         SHADOW_INTERPOLATER = $interpolate('box-shadow: {{ horizon }}px {{ vertical }}px {{ blur }}px {{ spread }}px {{ color }};'),
         BROWSER_PREFIXED_INTERPOLATER = $interpolate('{{ property }}: {{ prefix }}{{ style }};'),
-        
+
         BG_TINTED_IMAGE_STYLE_INTERPOLATER = $interpolate('linear-gradient(top, {{ color }}, {{ color }} ), url( {{ image }} )'),
         IMAGE_INTERPOLATER = $interpolate('{{ property }}: url( {{ image }} );'),
 
@@ -40,13 +40,13 @@
         ids = {};
 
       function cssSafe (string) {
-        return string.replace(classnameRE, '-').replace(/-$/,'');
+        return string && string.replace(classnameRE, '-').replace(/-$/,'');
       }
 
       function getOpacity (properties) {
         var opacity = properties &&
           (angular.isUndefined(properties.opacity) ? 1 : (properties.opacity / 100));
-      
+
         return opacity;
       }
 
@@ -137,7 +137,7 @@
 
           // nothing
           case 7:
-          case 5:        
+          case 5:
             return result;
 
           // no image or no opacity/image combination,
@@ -149,9 +149,9 @@
               property: 'background-color',
               color: color
             });
-            
+
             break;
-          
+
           // color behind image
           case 2:
             result.class = cssSafe(color) + '_' + cssSafe(imageName || image);
@@ -163,7 +163,7 @@
             });
 
             break;
-          
+
           // color and/or opacity not defined,
           // so simple bgimage is the only need
           case 3:
@@ -307,7 +307,7 @@
         }
 
         result.class = 'shadow' +
-          (color !== true ? cssSafe(color) : '') + 
+          (color !== true ? cssSafe(color) : '') +
             '_' + horizon + '-' + vertical + '-' + blur + '-' + spread;
 
         result.style = SHADOW_INTERPOLATER({

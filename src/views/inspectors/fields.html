@@ -1,0 +1,296 @@
+<fieldset>
+  <!-- start content for formfields directive -->
+  <div
+    ng-repeat="ls in model.ordered track by $index"
+    ng-hide="ls === undefined"
+    class="row control">
+    <span is-dev ng-if="isDev('showID')">{{ this.$id }}</span>
+    <inspector-item item="model" setting="ls" value="ls.setting">
+      <ng-include src="template()"></ng-include>
+    </inspector-item>
+  </div>
+
+</fieldset>
+
+<script type="text/ng-template" id="views-inspectors-service-driven-select.html">
+  <div service-driven-select ng-show="toggled()" service="{{ setting.service }}" populate="options" action="{{ setting.action || setting.service }}">
+    <label>{{ setting.label }}</label>
+    <ui-select
+      on-select="set(null,$item.data)"
+      ng-model="selected().item"
+      theme="selectize"
+    >
+      <ui-select-match placeholder="Select ..." ng-bind-html="$select.selected.markup || $select.selected.title || $select.selected.label"></ui-select-match>
+      <ui-select-choices
+        repeat="v in setting.options track by v.value"
+        >
+        <span ng-bind-html="v.markup || v.title || v.label | highlight: $select.search"></span>
+      </ui-select-choices>
+    </ui-select>
+  </div>
+</script>
+
+<script type="text/ng-template" id="views-inspectors-string.html"></script>
+
+<script type="text/ng-template" id="views-inspectors-object.html">
+  <fieldset class="settings">
+    <div
+      ng-repeat="aspect in setting.aspects track by $index"
+      class="row control">
+      <ng-include inspector-item src="template()">
+      </ng-include>
+    </div>
+  </fieldset>
+</script>
+
+<script type="text/ng-template" id="views-inspectors-number-slider-control.html">
+  <div inspector-slider="" ng-show="toggled()" class="control ui-button">
+        <ng-include src="views-controls-slider.html"></ng-include>
+  </div>
+</script>
+
+<script type="text/ng-template" id="views-controls-slider.html">
+    <label class="slider-label" ng-bind-html="option('slider','label')"></label>
+    <p class="slider-value">
+
+      <input type="range"
+        ng-change="send(option('slider','setting'))"
+        ng-model="get(option('slider','setting')).value"
+        min="{{ option('slider','start') }}" max="{{ option('slider','end') }}" step="{{  option('slider','step') }}" />
+
+      <input type="number"
+        ng-change="send(option('slider','setting'))"
+        ng-model="get(option('slider','setting')).value"
+        min="{{ option('slider','start') }}" max="{{ option('slider','end') }}" step="{{  option('slider','step') }}" />
+
+      <span ng-bind-html="getOption('slider','setting').value"></span>
+      <span ng-bind-html="option('slider','suffix')">%</span>
+    </p>
+</script>
+
+<script type="text/ng-template" id="views-inspectors-number-slider.html">
+  <div inspector-slider="" ng-show="toggled()" class="control ui-button">
+    <ng-include src="'views-controls-slider.html'"></ng-include>
+  </div>
+</script>
+
+<script type="text/ng-template" id="views-inspectors-number.html">
+  <div ng-show="toggled()">
+    <label>{{ setting.label }}</label>
+    <input
+      type="number"
+      placeholder="{{ setting.placeholder }}"
+      ng-model="value.value" />
+  </div>
+</script>
+
+<script type="text/ng-template" id="views-inspectors-hidden.html">
+  <pre>{{ setting | json }}</pre>
+  <input type="hidden" ng-model="value.value" />
+</script>
+
+<script type="text/ng-template" id="views-inspectors-text.html">
+  <div ng-show="toggled()">
+    <label>{{ setting.label }}</label>
+    <input
+      type="text"
+      placeholder="{{ setting.placeholder }}"
+      ng-model="value.value"
+    />
+  </div>
+</script>
+
+<script type="text/ng-template" id="views-inspectors-textarea.html">
+  <div ng-show="toggled()">
+    <label>{{ setting.label }}</label>
+    <textarea
+      placeholder="{{ setting.placeholder }}"
+      ng-model="value.value"
+      rows="10"></textarea>
+  </div>
+</script>
+
+<script type="text/ng-template" id="views-inspectors-markdown-textblock.html">
+  <div ng-show="toggled()">
+    <label>{{ setting.label }}</label>
+    <textarea remarkable
+      placeholder="{{ setting.placeholder }}"
+      ng-model="value.source.value"
+      ng-change="markdown()"
+      rows="10"></textarea>
+    <input type="hidden" ng-model="value.compiled.value" />
+  </div>
+</script>
+
+<script type="text/ng-template" id="views-inspectors-select.html">
+  <div ng-show="toggled()">
+    <label>{{ setting.label }}</label>
+    <ui-select
+      on-select="set(null,$item[setting.property || 'value'])"
+      ng-model="selected().item"
+      theme="selectize"
+    >
+      <ui-select-match placeholder="Select ..." ng-bind-html="$select.selected.markup || $select.selected.title || $select.selected.label"></ui-select-match>
+      <ui-select-choices
+        group-by="settings.options[0].group ? 'group' : undefined"
+        repeat="v in setting.options track by v.value"
+        >
+        <span ng-bind-html="v.markup || v.title || v.label | highlight: $select.search"></span>
+      </ui-select-choices>
+    </ui-select>
+  </div>
+</script>
+
+<script type="text/ng-template" id="views-inspectors-component-select.html">
+  <div select-component class="component-select">
+    <label>{{ setting.label }}</label>
+
+    <ui-select
+      on-select="setComponent($item)"
+      ng-model="setting.selection"
+      theme="selectize">
+      <ui-select-match placeholder="Select component type..." ng-bind-html="$select.selected.markup"></ui-select-match>
+      <ui-select-choices
+        repeat="v in setting.options track by v.value"
+      >
+        <span ng-bind-html="v.markup || v.label | highlight: $select.search"></span>
+      </ui-select-choices>
+    </ui-select>
+
+    <div
+        watch-fields="{ channel: 'component:change', model: item.settings.component }"
+      >
+        <!-- <pre>{{ model | json }}</pre> -->
+
+      <div ng-repeat="cs in item.settings.component.ordered track by $index">
+        <inspector-item item="item.settings.component.composite" setting="cs" value="cs.setting">
+          <ng-include src="template()"></ng-include>
+        </inspector-item>
+      </div>
+    </div>
+
+  </div>
+
+</script>
+
+<script type="text/ng-template" id="views-inspectors-settings.html"></script>
+
+<script type="text/ng-template" id="views-inspectors-function-checkbox.html">
+  <div class="io">
+    <label>{{ setting.label }}</label>
+    <div class="switch round tiny">
+      <input
+        foundation-toggle
+        ng-click="toggle()"
+        ng-checked="toggled()" id="setting-{{ this.$id }}" type="checkbox" />
+      <label for="setting-{{ this.$id }}"></label>
+    </div>
+    <div class="clearfix"></div>
+  </div>
+</script>
+
+<script type="text/ng-template" id="views-inspectors-checkbox.html">
+  <div ng-show="toggled()" class="io">
+    <label>{{ setting.label }}</label>
+    <div
+      class="switch round tiny"
+    >
+      <input
+        foundation-toggle
+        ng-click="check()"
+        ng-checked="checked()" id="setting-{{ this.$id }}" type="checkbox" />
+      <label for="setting-{{ this.$id }}"></label>
+    </div>
+    <div class="clearfix"></div>
+  </div>
+</script>
+
+<script type="text/ng-template" id="views-inspectors-color.html">
+  <div ng-show="toggled()" class="control ui-button">
+
+    <ng-include src="'views-controls-slider.html'"></ng-include>
+
+    <a href="" visibly-transparent="{{ color }}"
+      ng-repeat="color in behaviors.colors()"
+      class="button chooser radius"
+      ng-class="{ selected: is('color', color) }"
+      ng-click="set('color',color)"
+      style="background-color: {{color}}"
+    ></a>
+    <input type="hidden" value="{{ value.color.value || 'transparent' }}" />
+  </div>
+</script>
+
+<script type="text/ng-template" id="views-inspectors-color-slider.html">
+  <div foundation-slider="{ watch: 'this.setting', options: options('slider') }" ng-show="toggled()" class="control ui-button">
+
+    <ng-include src="'views-controls-slider.html'"></ng-include>
+
+    <a href="" visibly-transparent="{{ color }}"
+      ng-repeat="color in behaviors.colors()"
+      class="button chooser radius"
+      ng-class="{ selected: is('color', color) }"
+      ng-click="set('color',color)"
+      style="background-color: {{color}}"
+    ></a>
+    <input type="hidden" value="{{ value.color.value || 'transparent' }}" />
+  </div>
+</script>
+
+<script type="text/ng-template" id="views-inspectors-slider.html">
+  <ng-include src="'views-inspectors-number-slider.html'"></ng-include>
+</script>
+
+<script type="text/ng-template" id="views-inspectors-sider.html">
+  <div sider-settings ng-show="toggled()">
+    <span class="horizontal t"><input type="checkbox" ng-model="value.top.value" id="t-{{ $id }}" /><label for="t-{{ $id }}" class="t">T</label></span>
+      <span class="horizontal">
+      <span class="vertical l"><label for="l-{{ $id }}" class="l">L</label><input type="checkbox" ng-model="value.left.value" id="l-{{ $id }}" /></span>
+        <div class="ticky" ng-class="siderClasser()">borders</div>
+      <span class="vertical r"><input type="checkbox" ng-model="value.right.value" id="r-{{ $id }}" /><label for="r-{{ $id }}" class="r">R</label></span>
+    </span>
+    <span class="horizontal b"><input type="checkbox" ng-model="value.bottom.value" id="b-{{ $id }}" /><label for="b-{{ $id }}" class="b">B</label></span>
+  </div>
+</script>
+
+<script type="text/ng-template" id="views-inspectors-image-file-loader.html">
+  <div ng-show="toggled()" class="control ui-button">
+
+    <div dropbox-dropin="chooser"
+      dropbox-dropin-options="{ chosen: setSimple }">
+      <button class="button">From Dropbox</button>
+    </div>
+
+    <div field="setting" file-loader="" class="file-chooser">
+      <div class="button fileinput-button">Load Image</div>
+      <input id="setting-{{ this.$id }}-input" type="file" />
+    </div>
+    <img ng-show="value.value" id="setting-{{ this.$id }}-image" width="250" ng-src="{{ value.value }}" />
+  </div>
+</script>
+
+<script type="text/ng-template" id="views-inspectors-bg-image-file-loader.html">
+  <div ng-show="toggled()" class="control ui-button">
+
+    <ng-include src="'views-inspectors-image-file-loader.html'"></ng-include>
+
+    <accordion close-others="oneAtATime" ng-show="!!toggled()">
+      <div accordion-group heading="Background Image">
+        <div ng-show="value.value.length" id="setting-{{ this.$id }}-bg" ng-style="selectedStyle('200px')"></div>
+      </div>
+      <div background-chooser accordion-group heading="Background Patterns">
+        <div class="bg-chooser"
+          ng-click="set(null,'/images/bg/' + image); set('name',image)"
+          ng-repeat="image in backgroundImages"
+          ng-style="pattern('50px')"
+          ng-class="{ selected: isPattern() }"
+      />
+      </div>
+    </accordion>
+  </div>
+</script>
+
+<script type="text/ng-template" id="template-upload">
+</script>
+<script type="text/ng-template" id="template-download">
+</script>

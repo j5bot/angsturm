@@ -15,19 +15,19 @@
   angular.module('interfaceDesignerApp')
   .directive('inspector',
     [
-    
+
       'Shared',
       'Aspects',
-      
+
       'AngsturmComposer',
       'AngsturmMessages',
-    
+
       'LayoutService',
       'PalletService',
       'ContentService',
       'ColorService',
       'InspectorService',
-    
+
       'Mode',
       'LAYOUT_ITEM_PROPERTIES',
       'LAYOUT_CONTAINER_PROPERTIES',
@@ -35,19 +35,19 @@
       'LAYOUT_COLUMN_PROPERTIES',
 
       function (
-        
+
         Shared,
         Aspects,
-        
+
         Åc,
         Åmsg,
-        
+
         LayoutService,
         PalletService,
         ContentService,
         ColorService,
         InspectorService,
-        
+
         Mode,
         LAYOUT_ITEM_PROPERTIES,
         LAYOUT_CONTAINER_PROPERTIES,
@@ -73,7 +73,7 @@
         }
 
         // TODO: DRY this ... the logic is always the same,
-        function setImageDataURL(file, setting, value) {          
+        function setImageDataURL(file, setting, value) {
           setting.value = value;
 
           return {
@@ -127,7 +127,7 @@
         function siderClasser() {
           var setting = this.setting,
             sides = ['top','right','bottom','left'], active = [], result = {};
-          
+
           angular.forEach(sides, function (side, index) {
 
             if (setting.setting[side] && setting.setting[side].value) {
@@ -242,7 +242,7 @@
 
               Åmsg.createSender(data.origin, 'component:change', 'on')(data.value);
 
-            }, '(this.layout.currentItem.id || viiModel.id)');
+            }, '(this.layout.currentItem.id || model.id)');
 
             return InspectorController;
           }
@@ -292,7 +292,7 @@
 
           template: function template () {
             var type = this.setting && this.setting.editType;
-            
+
             if ( angular.isUndefined(type) ) {
               return '';
             }
@@ -341,14 +341,14 @@
           set: function set (which, value) {
             var $scope = this,
               name = which || this.setting._Åname;
-            
+
             which = setting(this, which);
             which && (which.value = value);
 
             executeWithScopeOnSetting(this, 'set', [name, which && which.value, this.setting]);
 
             $timeout(function () { $scope.$apply(); }, 0);
-            
+
             $scope.setSender({ name: name, setting: which, value: value, settings: this.setting.setting });
           },
 
@@ -440,21 +440,21 @@
 
     'AngsturmMessages',
     'AngsturmScope', 'AngsturmComposer',
-    
+
     function (
-    
+
       $timeout,
 
       Åmsg,
       Ås, Åc
-    
+
     ) {
 
       var sender; // update notifier
 
       var SelectComponent = {
         setComponent: function (selected) {
-          
+
           var $callerScope = this,
             settings = $callerScope.item.settings,
             component = settings.component || (settings.component = {}),
@@ -505,7 +505,7 @@
   ])
   .directive('inspectorSettings',
     [
-  
+
       function () {
 
         return {
@@ -521,9 +521,9 @@
       'AngsturmScope',
 
       function (
-      
+
         Ås
-      
+
       ) {
 
         var patternImageRE = new RegExp('.*/bg/(.*)$','i'),
@@ -531,7 +531,7 @@
         BackgroundChooser = {
 
           isPattern: function () {
-            
+
             var image = this.value && this.value.value,
               pattern = this.image;
 
@@ -582,5 +582,27 @@
       }
     ]
   );
+
+  angular.module('commonApp.directives')
+  .directive('formFields', [
+
+  function(
+  ) {
+
+    return {
+      restrict: 'E',
+      scope: {
+        id: '@elid',
+        fields: '=',
+        model: '=',
+        style: '@formStyle',
+        dictionary: '=',
+        behaviors: '=',
+        validateFunctions: '=',
+        submitted: '='
+      },
+      templateUrl: '/views/inspectors/fields.html'
+    };
+  }]);
 
 }).call(this);

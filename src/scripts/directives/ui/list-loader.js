@@ -1,7 +1,7 @@
 'use strict';
 
 (function (undefined) {
-  
+
   angular.module('interfaceDesignerApp')
   .directive('listLoader', [
 
@@ -100,8 +100,8 @@
 
               createContractService();
 
-              Åmsg.listen($scope, 'component:change', null, createContractService, '(this.item.id || viiModel.id)');
-              Åmsg.listen($scope, 'contract:change', null, createContractService, '(this.item.id || viiModel.id)');
+              Åmsg.listen($scope, 'component:change', null, createContractService, '(this.item.id || model.id)');
+              Åmsg.listen($scope, 'contract:change', null, createContractService, '(this.item.id || model.id)');
             }
 
           };
