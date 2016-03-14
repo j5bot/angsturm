@@ -70,6 +70,7 @@ const paths = {
     scripts: './src/scripts/**/*.js',
     sass: './src/styles/**/*.scss',
     css: './src/styles/**/*.css',
+    images: './src/images/**/*.{png,gif,jpg,jpeg,svg}',
 
     api: './src/api/**/*.{js,json}',
     data: './src/data/**/*.json',
@@ -112,6 +113,9 @@ const pipes = {
       gulp
         .src( paths.src.data )
         .pipe( gulp.dest( paths.dist.data ) ),
+      gulp
+        .src( paths.src.images )
+        .pipe( gulp.dest( paths.dist.images ) ),
       gulp
         .src( paths.src.views )
         .pipe( gulp.dest( paths.dist.views ) ),

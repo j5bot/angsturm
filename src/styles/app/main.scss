@@ -673,4 +673,12 @@ renderer {
   summary > h5 {
     display: inline;
   }
+
+  img {
+    position: absolute;
+    bottom: 0;
+    right: 0.5rem;
+    width: calc(15vh);
+    height: 15vh;
+  }
 }
