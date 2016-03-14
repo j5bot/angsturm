@@ -7,4 +7,4 @@ As a fledgling toolkit, it is presented in the form of an example application, t
 
 License
 =========
-angsturm.js is distributed under the terms of the ISC license.
+angsturm.js is distributed under the terms of the ICS license.
