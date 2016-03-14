@@ -135,67 +135,67 @@
         'aspect-file': { class: 'file' },
         'aspect-linktext': { class: 'linktext' }
       }
+    },
+    {
+      label: 'VCard',
+      value: 'vcard',
+      markup: '<i class="fa fa-user"></i> VCard',
+      setting: 'componentType',
+      aspects: {
+        'aspect-person': { class: 'vcard' },
+        'aspect-location': { class: 'location' }
+      }
     }
-    // {
-    //   label: 'VCard',
-    //   value: 'vcard',
-    //   markup: '<i class="fa fa-user"></i> VCard',
-    //   setting: 'componentType',
-    //   aspects: {
-    //     'aspect-person': { class: 'vcard' },
-    //     'aspect-location': { class: 'location' }
-    //   }
-    // }
-    // ,
-    // {
-    //   label: 'Link',
-    //   value: 'link',
-    //   markup: '<i class="fa fa-link"></i> Link',
-    //   setting: 'componentType',
-    //   aspects: {
-    //     'aspect-link-component': { class: 'link' }
-    //   }
-    // },
-    // {
-    //   label: 'Link to List',
-    //   value: 'link-to-list',
-    //   markup: '<i class="fa fa-link"></i><i class="fa fa-list"></i> Link to List',
-    //   setting: 'componentType',
-    //   aspects: {
-    //     'aspect-contract-consumer': { class: 'contract-consumer' },
-    //     'aspect-link-component': { class: 'link' }
-    //   }
-    // },
-    // {
-    //   label: 'Actions',
-    //   value: 'actions-list',
-    //   markup: '<i class="fa fa-pencil-square-o"></i> Actions List',
-    //   setting: 'componentType',
-    //   aspects: {
-    //     'aspect-actions-list-component': { class: 'actions-list' },
-    //   }
-    // },
-    // {
-    //   label: 'Actions CTA',
-    //   value: 'actions-cta',
-    //   markup: '<i class="fa fa-thumb-tack"></i> Actions CTA',
-    //   setting: 'componentType',
-    //   aspects: {
-    //     'aspect-contract-consumer': { class: 'contract-consumer' },
-    //     'aspect-link-component': { class: 'link' },
-    //     'aspect-list-count': { class: 'count' }
-    //   }
-    // },
-    // {
-    //   label: 'Any List',
-    //   value: 'any-list',
-    //   markup: '<i class="fa fa-cubes"></i> Any List',
-    //   setting: 'componentType',
-    //   aspects: {
-    //     'aspect-contract-consumer': { class: 'contract-consumer' },
-    //     'aspect-list-templated': { class: 'list' }
-    //   }
-    // }
+    ,
+    {
+      label: 'Link',
+      value: 'link',
+      markup: '<i class="fa fa-link"></i> Link',
+      setting: 'componentType',
+      aspects: {
+        'aspect-link-component': { class: 'link' }
+      }
+    },
+    {
+      label: 'Link to List',
+      value: 'link-to-list',
+      markup: '<i class="fa fa-link"></i><i class="fa fa-list"></i> Link to List',
+      setting: 'componentType',
+      aspects: {
+        'aspect-contract-consumer': { class: 'contract-consumer' },
+        'aspect-link-component': { class: 'link' }
+      }
+    },
+    {
+      label: 'Actions',
+      value: 'actions-list',
+      markup: '<i class="fa fa-pencil-square-o"></i> Actions List',
+      setting: 'componentType',
+      aspects: {
+        'aspect-actions-list-component': { class: 'actions-list' },
+      }
+    },
+    {
+      label: 'Actions CTA',
+      value: 'actions-cta',
+      markup: '<i class="fa fa-thumb-tack"></i> Actions CTA',
+      setting: 'componentType',
+      aspects: {
+        'aspect-contract-consumer': { class: 'contract-consumer' },
+        'aspect-link-component': { class: 'link' },
+        'aspect-list-count': { class: 'count' }
+      }
+    },
+    {
+      label: 'Any List',
+      value: 'any-list',
+      markup: '<i class="fa fa-cubes"></i> Any List',
+      setting: 'componentType',
+      aspects: {
+        'aspect-contract-consumer': { class: 'contract-consumer' },
+        'aspect-list-templated': { class: 'list' }
+      }
+    }
   ])
   // List of available row/column layouts
   .constant('LayoutOptions', [
