@@ -817,6 +817,7 @@
       }
     }
   ])
+
   // Composition pipeline.  Composed objects are created from the aspects they implement
   // Each aspect will express one or more of the pipeline property sets / objects
   // The first item in the pipeline is the name of the empty object which forms the base
@@ -826,10 +827,7 @@
   // which is created.  For example, the pipeline contains 'labels' which provides the
   // label for properties in the inspector view.
   .constant('PIPELINE', ['base','attributes','terser','labels','settings'])
-  // Legacy for using the viiFields directive
-  .constant('viiModulePath', 'modules/')
-  // Path to the inspector / form fields
-  .constant('formFieldsTemplate', 'interfaceDesigner/app/templates/inspector/fields.html')
+
   // Establish the interface designer routing
   // Decorate the Aspects service with aspects-related constants declared here in the app
   // e.g. ComponentList, ContractAspects, ComponentAspects, LayoutAspects, LayoutOptions
@@ -842,7 +840,6 @@
   // Set up for lazy / run-time creation of injectables
   .config([
 
-    '$routeProvider',
     '$stateProvider',
     '$filterProvider',
     '$compileProvider',
@@ -851,7 +848,6 @@
 
     function (
 
-      $routeProvider,
       $stateProvider,
       $filterProvider,
       $compileProvider,
@@ -859,28 +855,6 @@
       $provide
 
     ) {
-
-      /*
-      $routeProvider
-      .when('/', {
-        templateUrl: 'views/main.html',
-        controller: 'MainCtrl',
-        resolve: {
-          'layouts': [ 'LayoutService', function (LayoutService) {
-            return LayoutService.load('default');
-          }]
-        }
-      })
-      .when('/:id', {
-        templateUrl: 'views/main.html',
-        controller: 'MainCtrl',
-        resolve: {
-          'layouts': [ '$route', 'LayoutService', function ($route, LayoutService) {
-            return LayoutService.load($route.current.params.id);
-          }]
-        }
-      });
-      */
 
       $stateProvider
         .state('designer', {
@@ -960,30 +934,6 @@
     }
 
   ])
-  // Set up theme and preload inspector templates
-  .run([
-
-    'editableOptions',
-    '$templateCache',
-    'viiModulePath',
-    'formFieldsTemplate',
-
-  function (
-
-    editableOptions,
-    $templateCache,
-
-    modulePath,
-    formFieldsTemplate
-
-  ) {
-
-    editableOptions.theme = 'default';
-
-    // preload templates
-    $templateCache.get(modulePath + formFieldsTemplate);
-
-  }])
 
   // Add the debug-specific jsonEditor direction
   // TODO: move elsewhere

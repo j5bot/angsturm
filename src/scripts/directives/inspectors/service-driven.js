@@ -1,7 +1,7 @@
 'use strict';
 
 (function (undefined) {
-  
+
   angular.module('interfaceDesignerApp')
   .directive('serviceDrivenSelect', [
 
@@ -24,7 +24,7 @@
           return {
 
             pre: function ($scope, $element, $attrs) {
-            
+
               var serviceName = $attrs.service,
                 populate = $attrs.populate,
                 action = $attrs.action,
@@ -50,7 +50,7 @@
               updateSelect();
 
               Åmsg.listen($scope, serviceName + ':' + settingName,
-                null, updateSelect, '(this.item.id || viiModel.id');
+                null, updateSelect, '(this.item.id || model.id');
 
             }
 
